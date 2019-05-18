@@ -7,6 +7,9 @@ package view;
 
 import Controller.LinkController;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,7 +24,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new GridLayout());
-
+ URL iconejanela = getClass().getResource("/images/logojanela.png");
+       Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(iconejanela);
+       this.setIconImage(iconeTitulo);
+    
     }
 
     /**
