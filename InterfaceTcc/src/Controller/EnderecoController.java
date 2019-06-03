@@ -27,5 +27,20 @@ public class EnderecoController {
     d.endereco(e);
     
     };
+       public void altendereco(String estado,String cidade,String rua,String bairro,String numero,String cep,String complemento,int id_end){
+    Endereco e = new Endereco();
+    e.setEstado(estado);
+    e.setCidade(cidade);
+    e.setRua(rua);
+    e.setBairro(bairro);
+    e.setNumero(numero);
+    e.setCep(cep);
+    e.setComplemento(complemento);
+   e.setId_end(id_end);
+    
+    EnderecoDAO d= new EnderecoDAO();
+    d.altendereco(e);
+    
+    };
     
 }

@@ -7,6 +7,15 @@ package view;
 
 import Controller.AlunoController;
 import Controller.EnderecoController;
+import Controller.TurmaController;
+import DAO.CursoDAO;
+import DAO.FuncionarioDAO;
+import DAO.HorarioDAO;
+import Modelo.Curso;
+import Modelo.Funcionario;
+import Modelo.Horario;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,6 +51,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jcbhorario = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
         jcbturma = new javax.swing.JComboBox<>();
+        jLabel37 = new javax.swing.JLabel();
+        jcbprof = new javax.swing.JComboBox<>();
+        jLabel38 = new javax.swing.JLabel();
+        jcbturma1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -51,7 +64,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         txttel = new javax.swing.JFormattedTextField();
         jLabel19 = new javax.swing.JLabel();
-        txtserie = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtemaila = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -60,6 +72,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         txtdtnasca = new javax.swing.JFormattedTextField();
         txtcela = new javax.swing.JFormattedTextField();
+        jcbserie = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         txtnomer = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -140,7 +153,16 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel31.setText("Curso");
 
-        jcbcurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "OFFICE", "WEB DESIGN", "INGLES", "HARDWARE", "GAME DESIGN I", "GAME DESIGN II", "GESTÃO EMPRESARIAL", " " }));
+        jcbcurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar..." }));
+        jcbcurso.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jcbcursoAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel34.setText("Horário");
 
@@ -155,6 +177,28 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel37.setText("Professor");
+
+        jcbprof.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar..." }));
+        jcbprof.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jcbprofAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabel38.setText("Sala ");
+
+        jcbturma1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Sala 01", "Sala 02", "Sala 03" }));
+        jcbturma1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbturma1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -166,19 +210,35 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jcbcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37)
+                    .addComponent(jcbprof, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcbhorario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
-                .addGap(59, 59, 59)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcbturma, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
-                .addGap(168, 168, 168))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel38)
+                    .addComponent(jcbturma1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(4, 4, 4)
+                        .addComponent(jcbturma1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addGap(4, 4, 4)
+                        .addComponent(jcbprof, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel35)
                         .addGap(4, 4, 4)
@@ -231,7 +291,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel20.setText("E-mail");
 
-        jLabel21.setText("Origem");
+        jLabel21.setText("Escola");
 
         jLabel22.setText("Telefone");
 
@@ -249,6 +309,13 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        jcbserie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "6º ano", "7º ano", "8º ano", "9º ano", "1º ano EM\t", "2º ano EM", "3º ano EM" }));
+        jcbserie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbserieActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -263,18 +330,19 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel21)
                             .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19)
-                            .addComponent(txtdtnasca)
-                            .addComponent(txtserie))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19)
+                                .addComponent(txtdtnasca))
+                            .addComponent(jcbserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23)
                             .addComponent(txttel)
                             .addComponent(txtcela, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 289, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
@@ -301,10 +369,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -377,9 +445,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel29.setText("E-mail");
 
-        jcbdia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jcbdia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        jcbano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       ", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980" }));
+        jcbano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -389,7 +457,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                         .addGap(755, 755, 755))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -699,21 +767,58 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcelrActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if ("".equals(txtnomea.getText()) || "".equals(txtdtnasca.getText()) || "".equals(txto.getText()) || "".equals(txtserie.getText()) || "".equals(txttel.getText()) || "".equals(txtcela.getText())
-                || "".equals(txtemaila.getText()) || "".equals(txtnomer.getText()) || "".equals(jcbgp.getSelectedItem()) || "".equals(txtdtnascr.getText()) || "".equals(txtcpf.getText()) || "".equals(txtrg.getText())
-                || "".equals(jcborg.getSelectedItem()) || "".equals(jcbdia.getSelectedItem()) || "".equals(jcbano.getSelectedItem()) || "".equals(txtcelr.getText()) || "".equals(txtemailr.getText())
+        if ("".equals(txtnomea.getText()) || "".equals(txtdtnasca.getText()) || "".equals(txto.getText()) || "".equals(jcbserie.getSelectedItem())
                 || "".equals(jcbestado.getSelectedItem()) || "".equals(txtcidade.getText()) || "".equals(txtrua.getText()) || "".equals(txtbairro.getText()) || "".equals(txtnum.getText())
-                || "".equals(txtcep.getText()) || "".equals(txtcom.getText())) {
+                || "".equals(txtcep.getText())) {
             JOptionPane.showMessageDialog(null, "Preencha Todos os Campos");
         } else {
             new EnderecoController().addendereco(jcbestado.getSelectedItem().toString(),
                     txtcidade.getText(), txtrua.getText(), txtbairro.getText(), txtnum.getText(),
                     txtcep.getText(), txtcom.getText());
 
-            new AlunoController().cadastraralun(txtnomea.getText(), txtdtnasca.getText(), txto.getText(), txtserie.getText(), txttel.getText(), txtcela.getText(),
+            new AlunoController().cadastraralun(txtnomea.getText(), txtdtnasca.getText(), txto.getText(), jcbserie.getSelectedItem().toString(), txttel.getText(), txtcela.getText(),
                     txtemaila.getText(), txtnomer.getText(), jcbgp.getSelectedItem().toString(), txtdtnascr.getText(), txtcpf.getText(), txtrg.getText(),
                     jcborg.getSelectedItem().toString(), jcbdia.getSelectedItem().toString(), jcbano.getSelectedItem().toString(), txtcelr.getText(), txtemailr.getText());
+            
+            new TurmaController().cadastraturm(jcbcurso.getSelectedItem().toString(),
+                    jcbdia.getSelectedItem().toString(),jcbhorario.getSelectedItem().toString(),jcbprof.getSelectedItem().toString(),jcbturma1.getSelectedItem().toString());
+      
+            //Limpar Todos os Campos
+            txtnomea.setText("");
+            txtdtnasca.setText("");
+            txto.setText("");
+            jcbserie.setSelectedItem(null);
+            txttel.setText("");
+            txtcela.setText("");
+
+            txtemaila.setText("");
+            txtnomer.setText("");
+            jcbgp.setSelectedItem(null);
+            txtdtnascr.setText("");
+            txtcpf.setText("");
+            txtrg.setText("");
+            jcborg.setSelectedItem(null);
+            jcbdia.setSelectedItem(null);
+            jcbano.setSelectedItem(null);
+            txtcelr.setText("");
+            txtemailr.setText("");
+            jcbestado.setSelectedItem(null);
+            txtcidade.setText("");
+            txtrua.setText("");
+            txtbairro.setText("");
+            txtnum.setText("");
+            txtcep.setText("");
+            txtcom.setText("");
+            jcbcurso.setSelectedItem(null);
+            jcbhorario.setSelectedItem(null);
+            jcbturma.setSelectedItem(null);
         }
+        
+        /*if ("".equals(txtnomea.getText()) || "".equals(txtdtnasca.getText()) || "".equals(txto.getText()) || "".equals(txtserie.getText()) || "".equals(txttel.getText()) || "".equals(txtcela.getText())
+                || "".equals(txtemaila.getText()) || "".equals(txtnomer.getText()) || "".equals(jcbgp.getSelectedItem()) || "".equals(txtdtnascr.getText()) || "".equals(txtcpf.getText()) || "".equals(txtrg.getText())
+                || "".equals(jcborg.getSelectedItem()) || "".equals(jcbdia.getSelectedItem()) || "".equals(jcbano.getSelectedItem()) || "".equals(txtcelr.getText()) || "".equals(txtemailr.getText())
+                || "".equals(jcbestado.getSelectedItem()) || "".equals(txtcidade.getText()) || "".equals(txtrua.getText()) || "".equals(txtbairro.getText()) || "".equals(txtnum.getText())
+                || "".equals(txtcep.getText()) || "".equals(txtcom.getText())) {*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -722,7 +827,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             txtnomea.setText("");
             txtdtnasca.setText("");
             txto.setText("");
-            txtserie.setText("");
+            jcbserie.setSelectedItem(null);
             txttel.setText("");
             txtcela.setText("");
 
@@ -754,6 +859,34 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbturmaActionPerformed
 
+    private void jcbturma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbturma1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbturma1ActionPerformed
+
+    private void jcbserieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbserieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbserieActionPerformed
+
+    private void jcbcursoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jcbcursoAncestorAdded
+         CursoDAO d = new CursoDAO();
+        List<Curso> espec = d.ListaJCB("id_curso", "");
+        DefaultComboBoxModel model = (DefaultComboBoxModel) jcbcurso.getModel();
+       // model.removeAllElements();
+        for (Curso e : espec) {
+          model.addElement(e.getCurso());
+        }
+    }//GEN-LAST:event_jcbcursoAncestorAdded
+
+    private void jcbprofAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jcbprofAncestorAdded
+        FuncionarioDAO d = new FuncionarioDAO();
+        List<Funcionario> nomefunc = d.ListaFunc("id_funcionario", "");
+        DefaultComboBoxModel model = (DefaultComboBoxModel) jcbprof.getModel();
+       // model.removeAllElements();
+        for (Funcionario e : nomefunc) {
+          model.addElement(e.getNome());
+        }
+    }//GEN-LAST:event_jcbprofAncestorAdded
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -784,6 +917,8 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -801,7 +936,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbgp;
     private javax.swing.JComboBox<String> jcbhorario;
     private javax.swing.JComboBox<String> jcborg;
+    private javax.swing.JComboBox<String> jcbprof;
+    private javax.swing.JComboBox<String> jcbserie;
     private javax.swing.JComboBox<String> jcbturma;
+    private javax.swing.JComboBox<String> jcbturma1;
     private javax.swing.JTextField txtbairro;
     private javax.swing.JFormattedTextField txtcela;
     private javax.swing.JFormattedTextField txtcelr;
@@ -819,7 +957,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txto;
     private javax.swing.JFormattedTextField txtrg;
     private javax.swing.JTextField txtrua;
-    private javax.swing.JTextField txtserie;
     private javax.swing.JFormattedTextField txttel;
     // End of variables declaration//GEN-END:variables
 }

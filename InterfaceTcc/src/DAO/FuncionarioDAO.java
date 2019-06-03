@@ -9,7 +9,10 @@ import Modelo.Funcionario;
 import Projeto.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,6 +44,28 @@ public class FuncionarioDAO {
             stmt.execute();
             stmt.close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    //listando Funcionarios
+    public List<Funcionario> ListaFunc(String campo, String inf) {
+        try {
+            List<Funcionario> func = new ArrayList<Funcionario>();
+            PreparedStatement stmt = this.c.prepareStatement
+            ("select * from funcionario where " + campo + " like '%" + inf + "%' and funcao = 'Professor'");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                
+               Funcionario f = new Funcionario();
+                f.setId_funcionario(rs.getInt("id_funcionario"));
+                f.setNome(rs.getString("nome"));
+                func.add(f);
+            }
+            rs.close();
+            stmt.close();
+            return func;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

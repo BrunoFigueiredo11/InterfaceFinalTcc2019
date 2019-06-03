@@ -11,28 +11,29 @@ numero nvarchar(10) not null,
 cep nvarchar (20) not null,
 complemento nvarchar (50) default 'vazio'
 );
-select * from endereco;
+
+
  create table aluno (
 ctr int auto_increment not null,
-nome nvarchar (100) not null,
-dt_nasc nvarchar(16) not null,
-origem nvarchar (100) not null,
-serie nvarchar (20) not null,
-tr nvarchar (20),
-tc nvarchar (20),
-email nvarchar (50),
+nome nvarchar (100) not null default "Vazio",
+dt_nasc nvarchar(16) not null default "Vazio",
+origem nvarchar (100) not null default "Vazio",
+serie nvarchar (20) not null default "Vazio",
+tr nvarchar (20) default "Vazio",
+tc nvarchar (20) default "Vazio",
+email nvarchar (50) default "Vazio",
 id_ende int,
 
-rnome nvarchar (100) default 'vazio',
-rgp nvarchar (20) default 'vazio',
-rdt_nasc nvarchar (20) default 'vazio',
-rcpf nvarchar (20) default 'vazio',
-rrg nvarchar (20) default 'vazio',
-rorg_exp nvarchar (30) default 'vazio',
-rdia nvarchar (4) default '00',
-rano nvarchar (8) default '0000',
-rtc nvarchar(18) default 'vazio',
-remail nvarchar (50) default 'vazio',
+rnome nvarchar (100),
+rgp nvarchar (20),
+rdt_nasc nvarchar (20),
+rcpf nvarchar (20),
+rrg nvarchar (20),
+rorg_exp nvarchar (100),
+rdia nvarchar (4),
+rano nvarchar (8),
+rcel nvarchar(18),
+remail nvarchar (50),
 constraint pk_ctr primary key (ctr),
 constraint pk_id_end foreign key (id_ende) references endereco (id_end));
 
@@ -42,7 +43,7 @@ curso nvarchar(50) not null,
 carga_horaria varchar (20) not null,
 descricao nvarchar (200) not null,
 constraint pk_id_curso primary key (id_curso));
-select c.curso, c.carga_horaria, c.descricao from curso c;
+
 create table horario (
 id_horario int auto_increment not null,
 dias enum ('SEGUNDA-FEIRA','TERÇA-FEIRA','QUARTA-FEIRA','QUINTA-FEIRA','SABADO') not null,
@@ -64,8 +65,6 @@ constraint pk_id_funcionario primary key (id_funcionario),
 constraint pk_id_endereco foreign key (id_end) references endereco (id_end)
 );
 
-insert into funcionario(nome,funcao,usuario,senha) values('bruno','diretoria','bruno','1234');
-
 create table turmas (
 id_turmas int auto_increment not null,
 ctr int,
@@ -79,6 +78,7 @@ constraint fk_id_curso foreign key (id_curso) references curso(id_curso),
 constraint fk_id_horario foreign key (id_horario) references horario(id_horario),
 constraint fk_id_funcionario foreign key (id_funcionario) references funcionario(id_funcionario));
 
+select * from turmas;
 create table chamada(
 idchamada int auto_increment not null,
 ctr int,

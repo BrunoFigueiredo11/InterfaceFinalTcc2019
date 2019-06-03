@@ -19,14 +19,16 @@ import java.util.List;
  * @author bruno
  */
 public class CursoDAO {
-     Connection c;
+
+    Connection c;
 
     public CursoDAO() {
         c = new ConnectionFactory().conexao();
     }
+
     // metodo adicionar curso
-    public void addcur (Curso add){
-    String sql = "insert into curso(id_curso,curso,carga_horaria,descricao) values (default,?,?,?);";
+    public void addcur(Curso add) {
+        String sql = "insert into curso(id_curso,curso,carga_horaria,descricao) values (default,?,?,?);";
         try {
             PreparedStatement stmt = c.prepareStatement(sql);
             stmt.setString(1, add.getCurso());
@@ -37,15 +39,15 @@ public class CursoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-} 
+    }
     // metodo de listar cursos
-    
-    public List<Curso> getLista(String campo, String inf){
+
+    public List<Curso> getLista(String campo, String inf) {
         try {
             List<Curso> listCurso = new ArrayList<>();
             PreparedStatement stmt = this.c.prepareStatement("select c.curso, c.carga_horaria, c.descricao from curso c;");
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Curso lC = new Curso();
                 lC.setId_curso(rs.getInt("id_curso"));
                 lC.setCarga_horaria(rs.getString("carga_horaria"));
@@ -58,19 +60,19 @@ public class CursoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }  
-    
-     public List<Curso> getLista1(){
+    }
+
+    public List<Curso> getLista1() {
         try {
             List<Curso> listCurso = new ArrayList<>();
             PreparedStatement stmt = this.c.prepareStatement("select c.curso, c.carga_horaria , c.descricao from curso c;");
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Curso lC = new Curso();
-                 lC.setCurso(rs.getString("c.curso"));
+                lC.setCurso(rs.getString("c.curso"));
                 lC.setCarga_horaria(rs.getString("c.carga_horaria"));
                 lC.setDescricao(rs.getString("c.descricao"));
-               listCurso.add(lC);
+                listCurso.add(lC);
             }
             rs.close();
             stmt.close();
@@ -78,5 +80,27 @@ public class CursoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-}
+    }
+    
+    //listando Cursos JComboBox
+    public List<Curso> ListaJCB(String campo, String inf) {
+        try {
+            List<Curso> cursos = new ArrayList<Curso>();
+            PreparedStatement stmt = this.c.prepareStatement
+            ("select * from curso where " + campo + " like '%" + inf + "%'");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                
+               Curso c = new Curso();
+                c.setId_curso(rs.getInt("id_curso"));
+                c.setCurso(rs.getString("curso"));
+                cursos.add(c);
+            }
+            rs.close();
+            stmt.close();
+            return cursos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

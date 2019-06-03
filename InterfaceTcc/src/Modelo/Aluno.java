@@ -28,7 +28,7 @@ public class Aluno {
     private String rorg_exp;
     private String rdia;
     private String rano;
-    private String rtc;
+    private String rcel;
     private String remail;
 
     public int getCtr() {
@@ -167,12 +167,12 @@ public class Aluno {
         this.rano = rano;
     }
 
-    public String getRtc() {
-        return rtc;
+    public String getRcel() {
+        return rcel;
     }
 
-    public void setRtc(String rtc) {
-        this.rtc = rtc;
+    public void setRcel(String rtc) {
+        this.rcel = rtc;
     }
 
     public String getRemail() {

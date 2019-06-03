@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Modelo.Aluno;
 import Modelo.Endereco;
 import Projeto.ConnectionFactory;
 import java.sql.Connection;
@@ -32,6 +33,26 @@ public class EnderecoDAO {
             endereco.setString(5, end.getNumero());
             endereco.setString(6, end.getCep());
             endereco.setString(7, end.getComplemento());
+            endereco.execute();
+            endereco.close();
+            
+     }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+     }
+    // Alterar Endereco Aluno
+    public void altendereco(Endereco end){
+     String id = "update endereco set estado=?, cidade=?, rua=?, bairro=?, numero=?, cep=?, complemento=? where id_end = ?;";
+        try {
+            PreparedStatement endereco = c.prepareStatement(id);
+            endereco.setString(1, end.getEstado());
+            endereco.setString(2, end.getCidade());
+            endereco.setString(3, end.getRua());
+            endereco.setString(4, end.getBairro());
+            endereco.setString(5, end.getNumero());
+            endereco.setString(6, end.getCep());
+            endereco.setString(7, end.getComplemento());
+            endereco.setInt(8, end.getId_end());
             endereco.execute();
             endereco.close();
             
