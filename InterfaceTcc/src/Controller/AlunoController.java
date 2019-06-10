@@ -7,7 +7,12 @@ package Controller;
 
 import DAO.AlunoDAO;
 import Modelo.Aluno;
+import Modelo.Curso;
+import Modelo.Dia;
 import Modelo.Endereco;
+import Modelo.Funcionario;
+import Modelo.Horario;
+import Modelo.Turma;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,11 +74,11 @@ public class AlunoController {
 
         AlunoDAO d = new AlunoDAO();
         d.altluno(c);
-        JOptionPane.showMessageDialog(null, "Aluno Alterado com Sucesso");
+       
     } 
-    public void pesquisar(String inf, Aluno a) {
+    public void pesquisar(String inf, Aluno a, Funcionario f, Curso c ,  Horario h ,Dia d,Turma t) {
         AlunoDAO l = new AlunoDAO();        
-        l.pesquisar(inf, a);
+        l.pesquisar(inf, a,f,c,h,d,t);
     }
      public void pesquisarEnde(String inf, Aluno a,Endereco e) {
         AlunoDAO l = new AlunoDAO();        

@@ -11,7 +11,6 @@ package Modelo;
  */
 public class Horario {
     private int id_horario;
-    private String dias;
     private String Horarios;
 
     public int getId_horario() {
@@ -22,14 +21,6 @@ public class Horario {
         this.id_horario = id_horario;
     }
 
-    public String getDias() {
-        return dias;
-    }
-
-    public void setDias(String dias) {
-        this.dias = dias;
-    }
-
     public String getHorarios() {
         return Horarios;
     }
@@ -37,4 +28,5 @@ public class Horario {
     public void setHorarios(String Horarios) {
         this.Horarios = Horarios;
     }
+
 }

@@ -17,42 +17,9 @@ public class Turma {
     private int id_funcionario;
     private String sala;
     private String curso;
-    private String dias;
-    private String horarios;
+    private String dia;
+    private String horario;
     private String funcionario;
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public String getDias() {
-        return dias;
-    }
-
-    public void setDias(String dias) {
-        this.dias = dias;
-    }
-
-    public String getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(String horarios) {
-        this.horarios = horarios;
-    }
-
-    public String getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(String funcionario) {
-        this.funcionario = funcionario;
-    }
-            
 
     public int getId_turmas() {
         return id_turmas;
@@ -101,4 +68,37 @@ public class Turma {
     public void setSala(String sala) {
         this.sala = sala;
     }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public String getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
+    }
+    
 }

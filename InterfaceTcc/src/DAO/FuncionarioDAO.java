@@ -26,7 +26,7 @@ public class FuncionarioDAO {
         c = new ConnectionFactory().conexao();
     }
     public void cadnfuncionario(Funcionario fun) {
-        String sql = "INSERT INTO funcionario(id_funcionario,nome,tr,tc,rg,funcao,usuario,senha,id_end) VALUES "
+        String sql = "INSERT INTO funcionario(id_funcionario,fnome,tr,tc,rg,funcao,usuario,senha,id_end) VALUES "
                 + "(default,?,?,?,?,?,?,?,(select max(id_end)from endereco));";
            
                 
@@ -60,7 +60,7 @@ public class FuncionarioDAO {
                 
                Funcionario f = new Funcionario();
                 f.setId_funcionario(rs.getInt("id_funcionario"));
-                f.setNome(rs.getString("nome"));
+                f.setNome(rs.getString("fnome"));
                 func.add(f);
             }
             rs.close();

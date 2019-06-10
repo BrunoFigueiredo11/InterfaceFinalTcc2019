@@ -5,6 +5,7 @@
         <title>Chamada SGE</title>
     </head>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="shortcut icon" href="Imagens/6402logojanela.ico" >
     <body>
         
         <h1 align="center">Lista de Chamada SGE</h1>

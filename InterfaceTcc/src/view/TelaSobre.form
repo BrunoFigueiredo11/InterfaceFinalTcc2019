@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[800, 600]"/>
+    </Property>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,106,0,0,3,44"/>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="true"/>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="32" style="3"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Sobre"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="330" y="30" width="100" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Calibri" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;center&gt;O SGE (Sistema de Gerenciamento Educacional), surgiu com o intuito de sanar alguns &lt;br&gt;&lt;p&gt;&#xa;dos problemas de armazenamento de uma das filiais da escola de &lt;br&gt;&#xa;cursos profissionalizantes Logus inform&#xe1;tica, situada em cotia. &lt;br&gt;&#xa;A oportunidade de desenvolver o projeto apareceu por meio de uma proposta de um dos integrantes do grupo,&#xa; que trabalhava na escola, vendo que a escola ainda armazenava registros importantes dos alunos de forma f&#xed;sica,&#xa; o que foi analisado como arcaico em vista do da import&#xe2;ncia dessas mesmas documenta&#xe7;&#xf5;es. &lt;br&gt;&lt;br&gt;&lt;/center&gt;&#xa;&#xa;&lt;font face=&quot;Calibrini&quot; size =&quot;5&quot;&gt;&#xa;&lt;u&gt;&lt;br&gt;&#xa;Ferramentas do Sistema:&lt;/u&gt;&lt;/font&gt;&lt;br&gt;&#xa;&#xa;Interface interativa com o usu&#xe1;rio;&lt;br&gt;&#xa;Cadastro de Funcion&#xe1;rios (Professores e Administra&#xe7;&#xe3;o);&lt;br&gt;&#xa;Cadastro de Alunos;&lt;br&gt;&#xa;Gerador de Relat&#xf3;rios;&lt;br&gt;&#xa;Gerador de chamadas;&lt;br&gt;&#xa;Servi&#xe7;os especializados de Funcion&#xe1;rios comuns e Usu&#xe1;rios administradores. &lt;br&gt;&#xa;&#xa;&lt;br&gt;&lt;br&gt;&#xa;Desenvolvedores: Bruno Figueiredo Sousa, Lucas Luiz dos Santos, Rodrigo Leite do Sacramento.&#xa;&#xa;&lt;/html&gt;&#xa;" noResource="true"/>
+        <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt;&#xa;O SGE (Sistema de Gerenciamento Educacional), surgiu com o intuito de sanar alguns dos problemas de armazenamento de uma das filiais da escola de cursos&#xa; profissionalizantes Logus inform&#xe1;tica, situada em cotia. &#xa;A oportunidade de desenvolver o projeto apareceu por meio de uma proposta de um dos integrantes do grupo,&#xa; que trabalhava na escola, vendo que a escola ainda armazenava registros importantes dos alunos de forma f&#xed;sica,&#xa; o que foi analisado como arcaico em vista do da import&#xe2;ncia dessas mesmas documenta&#xe7;&#xf5;es. &#xa;&#xa;Ferramentas do Sistema:&#xa;&#xa;Interface interativa com o usu&#xe1;rio;&#xa;Cadastro de Funcion&#xe1;rios (Professores e Administra&#xe7;&#xe3;o);&#xa;Cadastro de Alunos;&#xa;Gerador de Relat&#xf3;rios;&#xa;Gerador de chamadas;&#xa;Servi&#xe7;os especializados de Funcion&#xe1;rios comuns e Usu&#xe1;rios administradores. &#xa;&lt;br&gt;&#xa;&#xa;Desenvolvedores: Bruno Figueiredo Sousa, Lucas Luiz dos Santos, Rodrigo Leite do Sacramento.&#xa;&lt;/html&gt;&#xa;"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="50" y="70" width="710" height="500"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/fundosobre.png"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 600]"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+  </SubComponents>
+</Form>

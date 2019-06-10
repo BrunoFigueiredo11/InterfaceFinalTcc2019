@@ -6,7 +6,12 @@
 package DAO;
 
 import Modelo.Aluno;
+import Modelo.Curso;
+import Modelo.Dia;
 import Modelo.Endereco;
+import Modelo.Funcionario;
+import Modelo.Horario;
+import Modelo.Turma;
 import Projeto.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,8 +62,19 @@ public class AlunoDAO {
     }
     //PESQUISAR ALUNO
 
-    public void pesquisar(String inf, Aluno a) {
-        String sql = "select * from aluno where nome like '%" + inf + "%'";
+    public void pesquisar(String inf, Aluno a, Funcionario f, Curso c, Horario h, Dia d, Turma t) {
+
+        String sql = "select a.ctr,a.nome,a.dt_nasc , a.origem , a.serie , a.tr, a.tc, a.email, a.id_ende ,\n"
+                + "a.rnome,a.rgp,a.rdt_nasc,a.rcpf,a.rrg,a.rorg_exp,a.rdia,a.rano,a.rcel,a.remail,\n"
+                + "c.curso,\n"
+                + "h.horario,\n"
+                + "d.dia,\n"
+                + "f.fnome,\n"
+                + " t.sala , t.id_turmas from turmas t inner join aluno a on a.ctr = t.ctr \n"
+                + "inner join curso c on c.id_curso = t.id_curso \n"
+                + "inner join horario h on h.id_horario = t.id_horario \n"
+                + "inner join dia d on d.id_dia = t.id_dia\n"
+                + "inner join funcionario f on f.id_funcionario = t.id_funcionario where nome like '%" + inf + "%'";
         try {
             PreparedStatement stmt = this.c.prepareStatement(sql);
 
@@ -85,6 +101,13 @@ public class AlunoDAO {
                 a.setRano(rs.getString("rano"));
                 a.setRcel(rs.getString("rcel"));
                 a.setRemail(rs.getString("remail"));
+
+                c.setCurso(rs.getString("c.curso"));
+                h.setHorarios(rs.getString("h.horario"));
+                d.setDia(rs.getString("d.dia"));
+                f.setNome(rs.getString("f.fnome"));
+                t.setSala(rs.getString("t.sala"));
+                t.setId_turmas(rs.getInt("t.id_turmas"));
 
             }
             rs.close();
@@ -117,7 +140,7 @@ public class AlunoDAO {
             throw new RuntimeException(d);
         }
     }
-    
+
     public void altluno(Aluno cada) {
         String sql = "update aluno set nome=?, dt_nasc=?,origem=?,serie=?,tr=?,tc=?,email=?,rnome=?,rgp=?,rdt_nasc=?,rcpf=?,"
                 + "rrg=?,rorg_exp=?,rdia=?,rano=?,rcel=?,remail=? where ctr= ?;";

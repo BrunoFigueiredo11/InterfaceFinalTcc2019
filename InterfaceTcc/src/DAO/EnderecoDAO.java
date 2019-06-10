@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import Modelo.Aluno;
 import Modelo.Endereco;
 import Projeto.ConnectionFactory;
 import java.sql.Connection;

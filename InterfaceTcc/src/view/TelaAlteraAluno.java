@@ -7,12 +7,16 @@ package view;
 
 import Controller.AlunoController;
 import Controller.EnderecoController;
+import Controller.TurmaController;
 import DAO.CursoDAO;
 import DAO.FuncionarioDAO;
 import Modelo.Aluno;
 import Modelo.Curso;
+import Modelo.Dia;
 import Modelo.Endereco;
 import Modelo.Funcionario;
+import Modelo.Horario;
+import Modelo.Turma;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -50,6 +54,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         txtid_end = new javax.swing.JTextField();
+        txtidtur = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         txtctr = new javax.swing.JTextField();
@@ -59,7 +64,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
         jcbprof = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
         jcbhorario = new javax.swing.JComboBox<>();
-        jcbturma = new javax.swing.JComboBox<>();
+        jcbdia1 = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
         jcbsala = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
@@ -187,6 +192,10 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             }
         });
 
+        txtidtur.setFont(new java.awt.Font("Tahoma", 0, 1)); // NOI18N
+        txtidtur.setForeground(new java.awt.Color(255, 255, 255));
+        txtidtur.setEnabled(false);
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -204,6 +213,10 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
                         .addGap(87, 87, 87)
                         .addComponent(txtid_end, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtidtur)
+                .addGap(225, 225, 225))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +233,9 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
                         .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtpesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtidtur)
+                .addGap(18, 18, 18))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -259,10 +274,10 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
 
         jcbhorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "08-10", "10-12", "12-14", "14-16", "16-18", "18-20" }));
 
-        jcbturma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "SEGUNDA-FEIRA", "TERÇA-FEIRA", "QUARTA-FEIRA", "QUINTA-FEIRA", "SABADO" }));
-        jcbturma.addActionListener(new java.awt.event.ActionListener() {
+        jcbdia1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "SEGUNDA-FEIRA", "TERÇA-FEIRA", "QUARTA-FEIRA", "QUINTA-FEIRA", "SABADO" }));
+        jcbdia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbturmaActionPerformed(evt);
+                jcbdia1ActionPerformed(evt);
             }
         });
 
@@ -302,7 +317,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel34))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbturma, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbdia1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel35))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +329,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(txtctr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -329,7 +344,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel35)
                         .addGap(4, 4, 4)
-                        .addComponent(jcbturma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbdia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel34)
                         .addGap(4, 4, 4)
@@ -845,20 +860,29 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             txtcom.setText("");
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
-            jcbturma.setSelectedItem(null);
+            jcbdia1.setSelectedItem(null);
+              jcbprof.setSelectedItem(null);
+            jcbsala.setSelectedItem(null);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Aluno a = new Aluno();
         Endereco e=new Endereco();
+        
+        Funcionario f = new Funcionario();
+       Curso c = new Curso();
+       Horario h = new Horario();
+       Dia d= new Dia();
+       Turma t = new Turma();
+       
         AlunoController fr = new AlunoController();
         if ("".equals(txtpesq.getText())) {
 
             JOptionPane.showMessageDialog(null, "Campo Vazio,Digite Algo..");
 
         } else {
-            fr.pesquisar(txtpesq.getText(), a);
+            fr.pesquisar(txtpesq.getText(),a,f,c,h,d,t);
             txtctr.setText("");
             txtnomea.setText("");
             txtdtnasca.setText("");
@@ -878,6 +902,8 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             jcbano.setSelectedItem(null);
             txtcelr.setText("");
             txtemailr.setText("");
+              jcbprof.setSelectedItem(null);
+            jcbsala.setSelectedItem(null);
 
             txtctr.setText("" + a.getCtr());
             txtnomea.setText("" + a.getNome());
@@ -899,6 +925,14 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             txtcelr.setText("" + a.getRcel());
             txtemailr.setText("" + a.getRemail());
             txtid_end.setText("" + a.getId_ende());
+            jcbcurso.setSelectedItem(""+ c.getCurso());
+           jcbhorario.setSelectedItem("" + h.getHorarios());
+           jcbdia1.setSelectedItem("" + d.getDia());
+           jcbprof.setSelectedItem("" + f.getNome());
+            jcbsala.setSelectedItem("" + t.getSala());
+            txtidtur.setText("" + t.getId_turmas());
+            
+          
             
             // PESQUISAR ENDERECO
              fr.pesquisarEnde(txtid_end.getText(), a,e);
@@ -933,6 +967,9 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
                     txtemaila.getText(), txtnomer.getText(), jcbgp.getSelectedItem().toString(), txtdtnascr.getText(), txtcpf.getText(), txtrg.getText(),
                     jcborg.getSelectedItem().toString(), jcbdia.getSelectedItem().toString(), jcbano.getSelectedItem().toString(), txtcelr.getText(), txtemailr.getText(), Integer.parseInt(txtctr.getText()));
       
+            new TurmaController().altturm(jcbcurso.getSelectedItem().toString(),
+                    jcbdia1.getSelectedItem().toString(),jcbhorario.getSelectedItem().toString(),jcbprof.getSelectedItem().toString(),jcbsala.getSelectedItem().toString(),Integer.parseInt(txtidtur.getText()));
+      
             //Limpar Todos os Campos
             txtpesq.setText("");
             txtctr.setText("");
@@ -963,14 +1000,16 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
             txtcom.setText("");
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
-            jcbturma.setSelectedItem(null);
+            jcbdia1.setSelectedItem(null);
+            jcbprof.setSelectedItem(null);
+            jcbsala.setSelectedItem(null);
         }
          }
     }//GEN-LAST:event_btnaltActionPerformed
 
-    private void jcbturmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbturmaActionPerformed
+    private void jcbdia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbdia1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbturmaActionPerformed
+    }//GEN-LAST:event_jcbdia1ActionPerformed
 
     private void jcbsalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbsalaActionPerformed
         // TODO add your handling code here:
@@ -1045,6 +1084,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbano;
     private javax.swing.JComboBox<String> jcbcurso;
     private javax.swing.JComboBox<String> jcbdia;
+    private javax.swing.JComboBox<String> jcbdia1;
     private javax.swing.JComboBox<String> jcbestado;
     private javax.swing.JComboBox<String> jcbgp;
     private javax.swing.JComboBox<String> jcbhorario;
@@ -1052,7 +1092,6 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbprof;
     private javax.swing.JComboBox<String> jcbsala;
     private javax.swing.JComboBox<String> jcbserie;
-    private javax.swing.JComboBox<String> jcbturma;
     private javax.swing.JTextField txtbairro;
     private javax.swing.JFormattedTextField txtcela;
     private javax.swing.JFormattedTextField txtcelr;
@@ -1066,6 +1105,7 @@ public class TelaAlteraAluno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtemaila;
     private javax.swing.JTextField txtemailr;
     private javax.swing.JTextField txtid_end;
+    private javax.swing.JLabel txtidtur;
     private javax.swing.JTextField txtnomea;
     private javax.swing.JTextField txtnomer;
     private javax.swing.JTextField txtnum;

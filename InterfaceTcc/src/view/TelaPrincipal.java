@@ -354,6 +354,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Menusobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/information.png"))); // NOI18N
         Menusobre.setText("Sobre");
+        Menusobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenusobreMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(Menusobre);
 
         setJMenuBar(jMenuBar1);
@@ -496,6 +501,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LinkController l = new LinkController();
         LinkController.main();
     }//GEN-LAST:event_btnturmas1ActionPerformed
+
+    private void MenusobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenusobreMouseClicked
+        TelaSobre telasobre = new TelaSobre();
+        jdptela.add(telasobre);
+        telasobre.setVisible(true);
+        
+    }//GEN-LAST:event_MenusobreMouseClicked
 
     /**
      * @param args the command line arguments

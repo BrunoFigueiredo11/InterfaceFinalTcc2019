@@ -9,9 +9,11 @@ import Controller.AlunoController;
 import Controller.EnderecoController;
 import Controller.TurmaController;
 import DAO.CursoDAO;
+import DAO.DiaDAO;
 import DAO.FuncionarioDAO;
 import DAO.HorarioDAO;
 import Modelo.Curso;
+import Modelo.Dia;
 import Modelo.Funcionario;
 import Modelo.Horario;
 import java.util.List;
@@ -50,11 +52,11 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         jcbhorario = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
-        jcbturma = new javax.swing.JComboBox<>();
+        jcbdia1 = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
         jcbprof = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
-        jcbturma1 = new javax.swing.JComboBox<>();
+        jcbsala = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -166,14 +168,32 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel34.setText("Horário");
 
-        jcbhorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "08-10", "10-12", "12-14", "14-16", "16-18", "18-20" }));
+        jcbhorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar..." }));
+        jcbhorario.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jcbhorarioAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabel35.setText("Dia");
 
-        jcbturma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "SEGUNDA-FEIRA", "TERÇA-FEIRA", "QUARTA-FEIRA", "QUINTA-FEIRA", "SABADO" }));
-        jcbturma.addActionListener(new java.awt.event.ActionListener() {
+        jcbdia1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar..." }));
+        jcbdia1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jcbdia1AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jcbdia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbturmaActionPerformed(evt);
+                jcbdia1ActionPerformed(evt);
             }
         });
 
@@ -192,10 +212,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel38.setText("Sala ");
 
-        jcbturma1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Sala 01", "Sala 02", "Sala 03" }));
-        jcbturma1.addActionListener(new java.awt.event.ActionListener() {
+        jcbsala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Sala 01", "Sala 02", "Sala 03" }));
+        jcbsala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbturma1ActionPerformed(evt);
+                jcbsalaActionPerformed(evt);
             }
         });
 
@@ -218,12 +238,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel34))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcbturma, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbdia1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel38)
-                    .addComponent(jcbturma1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbsala, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -234,7 +254,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel38)
                         .addGap(4, 4, 4)
-                        .addComponent(jcbturma1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbsala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addGap(4, 4, 4)
@@ -242,7 +262,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel35)
                         .addGap(4, 4, 4)
-                        .addComponent(jcbturma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbdia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel34)
                         .addGap(4, 4, 4)
@@ -781,7 +801,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     jcborg.getSelectedItem().toString(), jcbdia.getSelectedItem().toString(), jcbano.getSelectedItem().toString(), txtcelr.getText(), txtemailr.getText());
             
             new TurmaController().cadastraturm(jcbcurso.getSelectedItem().toString(),
-                    jcbdia.getSelectedItem().toString(),jcbhorario.getSelectedItem().toString(),jcbprof.getSelectedItem().toString(),jcbturma1.getSelectedItem().toString());
+                    jcbdia1.getSelectedItem().toString(),jcbhorario.getSelectedItem().toString(),jcbprof.getSelectedItem().toString(),jcbsala.getSelectedItem().toString());
       
             //Limpar Todos os Campos
             txtnomea.setText("");
@@ -811,7 +831,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             txtcom.setText("");
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
-            jcbturma.setSelectedItem(null);
+            jcbdia1.setSelectedItem(null);
+              jcbprof.setSelectedItem(null);
+            jcbsala.setSelectedItem(null);
         }
         
         /*if ("".equals(txtnomea.getText()) || "".equals(txtdtnasca.getText()) || "".equals(txto.getText()) || "".equals(txtserie.getText()) || "".equals(txttel.getText()) || "".equals(txtcela.getText())
@@ -851,17 +873,19 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             txtcom.setText("");
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
-            jcbturma.setSelectedItem(null);
+            jcbdia1.setSelectedItem(null);
+              jcbprof.setSelectedItem(null);
+            jcbsala.setSelectedItem(null);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jcbturmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbturmaActionPerformed
+    private void jcbdia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbdia1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbturmaActionPerformed
+    }//GEN-LAST:event_jcbdia1ActionPerformed
 
-    private void jcbturma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbturma1ActionPerformed
+    private void jcbsalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbsalaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbturma1ActionPerformed
+    }//GEN-LAST:event_jcbsalaActionPerformed
 
     private void jcbserieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbserieActionPerformed
         // TODO add your handling code here:
@@ -886,6 +910,26 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
           model.addElement(e.getNome());
         }
     }//GEN-LAST:event_jcbprofAncestorAdded
+
+    private void jcbhorarioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jcbhorarioAncestorAdded
+        HorarioDAO d = new HorarioDAO();
+        List<Horario> nomefunc = d.ListaJCB("id_horario", "");
+        DefaultComboBoxModel model = (DefaultComboBoxModel) jcbhorario.getModel();
+       // model.removeAllElements();
+        for (Horario e : nomefunc) {
+          model.addElement(e.getHorarios());
+        }
+    }//GEN-LAST:event_jcbhorarioAncestorAdded
+
+    private void jcbdia1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jcbdia1AncestorAdded
+        DiaDAO d = new DiaDAO();
+        List<Dia> nomefunc = d.ListaJCB("id_dia", "");
+        DefaultComboBoxModel model = (DefaultComboBoxModel) jcbdia1.getModel();
+       // model.removeAllElements();
+        for (Dia e : nomefunc) {
+          model.addElement(e.getDia());
+        }
+    }//GEN-LAST:event_jcbdia1AncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -932,14 +976,14 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbano;
     private javax.swing.JComboBox<String> jcbcurso;
     private javax.swing.JComboBox<String> jcbdia;
+    private javax.swing.JComboBox<String> jcbdia1;
     private javax.swing.JComboBox<String> jcbestado;
     private javax.swing.JComboBox<String> jcbgp;
     private javax.swing.JComboBox<String> jcbhorario;
     private javax.swing.JComboBox<String> jcborg;
     private javax.swing.JComboBox<String> jcbprof;
+    private javax.swing.JComboBox<String> jcbsala;
     private javax.swing.JComboBox<String> jcbserie;
-    private javax.swing.JComboBox<String> jcbturma;
-    private javax.swing.JComboBox<String> jcbturma1;
     private javax.swing.JTextField txtbairro;
     private javax.swing.JFormattedTextField txtcela;
     private javax.swing.JFormattedTextField txtcelr;

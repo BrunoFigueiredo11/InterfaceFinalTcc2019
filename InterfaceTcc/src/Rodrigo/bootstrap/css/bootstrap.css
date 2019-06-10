@@ -60,7 +60,9 @@ body {
   line-height: 1.5;
   color: #000000;
   text-align: left;
-  background-color: rgb(173, 255, 170);
+  background-color: #b8b8b8;
+  background-image: url("/home/criasoft/worklab/Rodrigo/Imagens/Logo.png");
+
 }
 
 [tabindex="-1"]:focus {

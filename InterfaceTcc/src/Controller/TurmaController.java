@@ -15,11 +15,11 @@ import javax.swing.JOptionPane;
  */
 public class TurmaController {
      // cadastrar aluno
-    public void cadastraturm(String curso, String dias, String horarios, String funcionario, String sala) {
+    public void cadastraturm(String curso, String dia, String horario, String funcionario, String sala) {
        Turma t = new Turma();
         t.setCurso(curso);
-        t.setDias(dias);
-        t.setHorarios(horarios);
+        t.setDia(dia);
+        t.setHorario(horario);
         t.setFuncionario(funcionario);
         t.setSala(sala);
                   
@@ -27,5 +27,20 @@ public class TurmaController {
        TurmaDAO d = new TurmaDAO();
         d.cadturm(t);
         JOptionPane.showMessageDialog(null, "Aluno Cadastrado com Sucesso");
+    } 
+    
+    public void altturm(String curso, String dia, String horario, String funcionario, String sala,int id_turm) {
+       Turma t = new Turma();
+        t.setCurso(curso);
+        t.setDia(dia);
+        t.setHorario(horario);
+        t.setFuncionario(funcionario);
+        t.setSala(sala);
+        t.setId_turmas(id_turm);
+                  
+
+       TurmaDAO d = new TurmaDAO();
+        d.alteturm(t);
+         JOptionPane.showMessageDialog(null, "Aluno Alterado com Sucesso");
     } 
 }
