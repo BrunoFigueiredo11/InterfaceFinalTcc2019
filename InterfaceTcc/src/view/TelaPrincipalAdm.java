@@ -6,12 +6,14 @@
 package view;
 
 import Controller.LinkController;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author bruno
  */
 public class TelaPrincipalAdm extends javax.swing.JFrame {
-
+ 
     public TelaPrincipalAdm() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -617,6 +619,8 @@ public class TelaPrincipalAdm extends javax.swing.JFrame {
         TelaListarCursos telacursos = new TelaListarCursos();
         jdptela.add(telacursos);
         telacursos.setVisible(true);
+        
+       
     }//GEN-LAST:event_btncursosActionPerformed
 
     private void btnadm1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnadm1MouseEntered

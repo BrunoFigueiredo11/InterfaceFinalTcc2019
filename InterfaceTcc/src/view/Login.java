@@ -21,10 +21,10 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         txtlogin.grabFocus();
-       URL iconejanela = getClass().getResource("/images/logojanela.png");
-       Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(iconejanela);
-       this.setIconImage(iconeTitulo);
-    
+        URL iconejanela = getClass().getResource("/images/logojanela.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(iconejanela);
+        this.setIconImage(iconeTitulo);
+
     }
 
     /**
@@ -171,23 +171,44 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        LoginDAO dao = new LoginDAO();
-        LoginDAO d = new LoginDAO();
 
-        if (d.checkLoginadm(txtlogin.getText(), txtsenha.getText())) {
-            new TelaPrincipalAdm().setVisible(true);
-            dispose();
-        } else {
+        try {
+            LoginDAO dao = new LoginDAO();
+            LoginDAO d = new LoginDAO();
 
-            if (dao.checkLogin(txtlogin.getText(), txtsenha.getText())) {
-                new TelaPrincipal().setVisible(true);
+            if (d.checkLoginadm(txtlogin.getText(), txtsenha.getText())) {
+                new TelaPrincipalAdm().setVisible(true);
                 dispose();
+
             } else {
-                JOptionPane.showMessageDialog(null, "Usuário/Senha Inválidos");
-                txtlogin.setText("");
-                txtsenha.setText("");
-                txtlogin.requestFocus();
+                try {
+                    if (dao.checkLoginProf(txtlogin.getText(), txtsenha.getText())) {
+                                new TelaPrincipal1().setVisible(true);
+                                dispose();
+                    
+                    } else {
+                        try {
+                            if (dao.checkLogin(txtlogin.getText(), txtsenha.getText())) {
+                        new TelaPrincipal().setVisible(true);
+                        dispose();
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuário/Senha Inválidos");
+                                txtlogin.setText("");
+                                txtsenha.setText("");
+                                txtlogin.requestFocus();
+
+                            }
+                        } catch (Exception e) {
+                        }
+                    }
+                } catch (Exception e) {
+                }
+
             }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Sem Conexão Com o Banco de Dados");
         }
 
 
@@ -261,6 +282,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtlogin;
     private javax.swing.JPasswordField txtsenha;
     // End of variables declaration//GEN-END:variables
-
 
 }

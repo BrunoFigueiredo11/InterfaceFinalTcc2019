@@ -16,7 +16,12 @@ import Modelo.Curso;
 import Modelo.Dia;
 import Modelo.Funcionario;
 import Modelo.Horario;
+import br.com.parg.viacep.CEP;
+import br.com.parg.viacep.ViaCEP;
+import br.com.parg.viacep.ViaCEPException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -111,6 +116,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jLabel42 = new javax.swing.JLabel();
         txtcidade = new javax.swing.JTextField();
         txtnum = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -146,6 +152,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jScrollPane2.setEnabled(false);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(762, 1200));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -346,9 +353,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
-                            .addComponent(txtnomea, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21)
-                            .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnomea, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -356,13 +363,13 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel19)
                                 .addComponent(txtdtnasca))
                             .addComponent(jcbserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel22)
                             .addComponent(jLabel23)
                             .addComponent(txttel)
-                            .addComponent(txtcela, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                        .addGap(0, 289, Short.MAX_VALUE))
+                            .addComponent(txtcela, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .addGap(0, 313, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20)
@@ -388,10 +395,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addComponent(jLabel19)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcbserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
@@ -485,13 +491,17 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(197, 197, 197))
-                                    .addComponent(txtnomer, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(78, 78, 78)
+                                        .addGap(275, 275, 275))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtnomer, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtdtnascr, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(78, 78, 78)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(78, 78, 78))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtdtnascr, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbgp, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -501,11 +511,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(48, 48, 48)))
-                                        .addGap(30, 30, 30)
+                                                .addGap(78, 78, 78))
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addComponent(txtcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtrg, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -523,9 +534,6 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                         .addGap(274, 274, 274)))
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(txtcelr, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jcbdia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -537,7 +545,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addComponent(jcbano, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtcelr, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(72, 72, 72))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -561,10 +572,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(4, 4, 4)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jcbgp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jcbgp)
-                                .addComponent(txtdtnascr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtnomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtnomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtdtnascr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(44, 44, 44)
                         .addComponent(jcbdia))
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -591,12 +602,21 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
+        jPanel9.setEnabled(false);
+
+        txtrua.setEditable(false);
 
         jLabel30.setText("Rua/AV");
 
         jLabel32.setText("Estado");
 
-        jcbestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA) ", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        jcbestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar...", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA ", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jcbestado.setEnabled(false);
+        jcbestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbestadoActionPerformed(evt);
+            }
+        });
 
         jLabel33.setText("Cep");
 
@@ -615,9 +635,20 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
 
         jLabel40.setText("Bairro");
 
+        txtbairro.setEditable(false);
+
         jLabel41.setText("Complemento");
 
         jLabel42.setText("Cidade");
+
+        txtcidade.setEditable(false);
+
+        jButton4.setText("Consultar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -648,8 +679,11 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel33)
-                                    .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(96, 96, 96)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton4)))
+                                .addGap(13, 13, 13)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbestado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel32))
@@ -676,7 +710,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
@@ -799,10 +835,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             new AlunoController().cadastraralun(txtnomea.getText(), txtdtnasca.getText(), txto.getText(), jcbserie.getSelectedItem().toString(), txttel.getText(), txtcela.getText(),
                     txtemaila.getText(), txtnomer.getText(), jcbgp.getSelectedItem().toString(), txtdtnascr.getText(), txtcpf.getText(), txtrg.getText(),
                     jcborg.getSelectedItem().toString(), jcbdia.getSelectedItem().toString(), jcbano.getSelectedItem().toString(), txtcelr.getText(), txtemailr.getText());
-            
+
             new TurmaController().cadastraturm(jcbcurso.getSelectedItem().toString(),
-                    jcbdia1.getSelectedItem().toString(),jcbhorario.getSelectedItem().toString(),jcbprof.getSelectedItem().toString(),jcbsala.getSelectedItem().toString());
-      
+                    jcbdia1.getSelectedItem().toString(), jcbhorario.getSelectedItem().toString(), jcbprof.getSelectedItem().toString(), jcbsala.getSelectedItem().toString());
+
             //Limpar Todos os Campos
             txtnomea.setText("");
             txtdtnasca.setText("");
@@ -832,10 +868,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
             jcbdia1.setSelectedItem(null);
-              jcbprof.setSelectedItem(null);
+            jcbprof.setSelectedItem(null);
             jcbsala.setSelectedItem(null);
         }
-        
+
         /*if ("".equals(txtnomea.getText()) || "".equals(txtdtnasca.getText()) || "".equals(txto.getText()) || "".equals(txtserie.getText()) || "".equals(txttel.getText()) || "".equals(txtcela.getText())
                 || "".equals(txtemaila.getText()) || "".equals(txtnomer.getText()) || "".equals(jcbgp.getSelectedItem()) || "".equals(txtdtnascr.getText()) || "".equals(txtcpf.getText()) || "".equals(txtrg.getText())
                 || "".equals(jcborg.getSelectedItem()) || "".equals(jcbdia.getSelectedItem()) || "".equals(jcbano.getSelectedItem()) || "".equals(txtcelr.getText()) || "".equals(txtemailr.getText())
@@ -874,7 +910,7 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
             jcbcurso.setSelectedItem(null);
             jcbhorario.setSelectedItem(null);
             jcbdia1.setSelectedItem(null);
-              jcbprof.setSelectedItem(null);
+            jcbprof.setSelectedItem(null);
             jcbsala.setSelectedItem(null);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -892,12 +928,12 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbserieActionPerformed
 
     private void jcbcursoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jcbcursoAncestorAdded
-         CursoDAO d = new CursoDAO();
+        CursoDAO d = new CursoDAO();
         List<Curso> espec = d.ListaJCB("id_curso", "");
         DefaultComboBoxModel model = (DefaultComboBoxModel) jcbcurso.getModel();
-       // model.removeAllElements();
+        // model.removeAllElements();
         for (Curso e : espec) {
-          model.addElement(e.getCurso());
+            model.addElement(e.getCurso());
         }
     }//GEN-LAST:event_jcbcursoAncestorAdded
 
@@ -905,9 +941,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         FuncionarioDAO d = new FuncionarioDAO();
         List<Funcionario> nomefunc = d.ListaFunc("id_funcionario", "");
         DefaultComboBoxModel model = (DefaultComboBoxModel) jcbprof.getModel();
-       // model.removeAllElements();
+        // model.removeAllElements();
         for (Funcionario e : nomefunc) {
-          model.addElement(e.getNome());
+            model.addElement(e.getNome());
         }
     }//GEN-LAST:event_jcbprofAncestorAdded
 
@@ -915,9 +951,9 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         HorarioDAO d = new HorarioDAO();
         List<Horario> nomefunc = d.ListaJCB("id_horario", "");
         DefaultComboBoxModel model = (DefaultComboBoxModel) jcbhorario.getModel();
-       // model.removeAllElements();
+        // model.removeAllElements();
         for (Horario e : nomefunc) {
-          model.addElement(e.getHorarios());
+            model.addElement(e.getHorarios());
         }
     }//GEN-LAST:event_jcbhorarioAncestorAdded
 
@@ -925,17 +961,42 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         DiaDAO d = new DiaDAO();
         List<Dia> nomefunc = d.ListaJCB("id_dia", "");
         DefaultComboBoxModel model = (DefaultComboBoxModel) jcbdia1.getModel();
-       // model.removeAllElements();
+        // model.removeAllElements();
         for (Dia e : nomefunc) {
-          model.addElement(e.getDia());
+            model.addElement(e.getDia());
         }
     }//GEN-LAST:event_jcbdia1AncestorAdded
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        try {
+            if ("     -   ".equals(txtcep.getText())) {
+                JOptionPane.showMessageDialog(null, "Campo CEP Vazio");
+            } else {
+                ViaCEP v = new ViaCEP();
+
+                v.buscar(txtcep.getText());
+                jcbestado.setSelectedItem("" + v.getUf());
+                txtcidade.setText("" + v.getLocalidade());
+                txtrua.setText("" + v.getLogradouro());
+                txtbairro.setText("" + v.getBairro());
+                txtcom.setText("" + v.getComplemento());
+            }
+        } catch (ViaCEPException ex) {
+
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jcbestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbestadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbestadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
