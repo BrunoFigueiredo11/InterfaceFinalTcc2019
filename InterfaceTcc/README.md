@@ -1,2 +1,1 @@
-# InterfaceJava
-Aulas de Interface Gr�fica no Netbeans
+Esse é um software desktop que auxilia no gerenciamento de um instituição de ensino, foi um projeto de TCC que fiz durante o curso no Centro Paula Souza (ETEC), para o projeto foram utilizados as seguintes linguagens: Java,PHP,MySQL.
